@@ -27,6 +27,9 @@ var k = 0;
 var i = 1;
 var isBattle = 0;
 var maxWinSum = 0;
+var progress = 0;
+  //it is not exact, since the number of battles depends on the choices
+  //it is beind used win + lose to do this approximation
 //var sortedList = [new Item("test")];
 
 function battle(array, a, b) {
@@ -80,6 +83,10 @@ export default function List() {
   const [showResults, setShowResults] = useState(false);
 
   const [sortedList, setSortedList] = useState([new Item("lista não carregada")]);
+
+  //const [progress, setProgress] = useState(0);
+  //it is not exact, since the number of battles depends on the choices
+  //it is beind used win + lose to do this approximation
 
   // Function to handle when itemA or itemB changes
   useEffect(() => {
@@ -302,6 +309,23 @@ export default function List() {
     }
   }
 
+  function updateProgressBar() {
+    const goal = maxWinSum - 1; // win + lose = array.length - 1
+    //newProgress = ((goal - progress) / goal) * 100; // Use counter instead of progress
+    //setProgress(newProgress); // Update the state to trigger a re-render
+    //let progress2 = array[0].win.length;
+    let sum = 0;
+    for(let k = 0; k < array.length; k++) {
+      sum += array[k].win.length;
+    } 
+    console.log("A SOMA ATUAL DE WIN É: ", sum);
+    let progress3 = 100 - ((goal - sum) / goal) * 100;
+    return {
+      //width: `${newProgress}%`,
+      width: `${progress3}%`
+    };
+  }
+
   
 
   return (
@@ -324,11 +348,16 @@ export default function List() {
       <button onClick={handleRankClick}>Rank</button>
       
       {showContent && itemA && itemB && (
-        <div>
-          <h2>Which one do you prefer?</h2>
-          <button onClick={handleClickA}>{itemA.name}</button>
-          <button onClick={handleClickB}>{itemB.name}</button>
-        </div>
+        <>
+          <div>
+            <h2>Which one do you prefer?</h2>
+            <button onClick={handleClickA}>{itemA.name}</button>
+            <button onClick={handleClickB}>{itemB.name}</button>
+          </div>
+          <div className="progress-bar-container">
+            <div className="progress-bar" style={updateProgressBar()}></div>
+          </div>
+        </>
       )}
 
       {showResults && (
