@@ -1,4 +1,4 @@
-class item {
+class Item {
   constructor(name) {
     this.name = name;
 
@@ -38,41 +38,54 @@ function updateOthers(array, w, l) {
   }
 }
 
-let array5 = [new item(1), new item(2), new item(3), new item(4), new item(5)];
-let array4 = [new item(4), new item(3), new item(2), new item(1)];
+let array5 = [new Item(1), new Item(2), new Item(3), new Item(4), new Item(5)];
+let array4 = [new Item(4), new Item(3), new Item(2), new Item(1)];
 
-let array6 = [new item(1), new item(2), new item(3), new item(4), new item(5), new item(6)];
+let array6 = [new Item(1), new Item(2), new Item(3), new Item(4), new Item(5), new Item(6)];
 
 let array7 = array6;
-array7.push(new item(7));
+array7.push(new Item(7));
 
 let array8 = array7;
-array8.push(new item(8));
+array8.push(new Item(8));
 
 let array9 = array8;
-array9.push(new item(9));
+array9.push(new Item(9));
 
 let array10 = array9;
-array10.push(new item(10));
+array10.push(new Item(10));
 
 let array12 = [
-  new item(9),
-  new item(10),
-  new item(11),
-  new item(1),
-  new item(2),
-  new item(6),
-  new item(5),
-  new item(4),
-  new item(3),
-  new item(8),
-  new item(12),
-  new item(7),
+  new Item(9),
+  new Item(10),
+  new Item(11),
+  new Item(1),
+  new Item(2),
+  new Item(6),
+  new Item(5),
+  new Item(4),
+  new Item(3),
+  new Item(8),
+  new Item(12),
+  new Item(7),
   
 ]
 
+array10 = [
+  new Item(10),
+  new Item(9),
+  new Item(8),
+  new Item(7),
+  new Item(6),
+  new Item(5),
+  new Item(4),
+  new Item(3),
+  new Item(2),
+  new Item(1)  
+]
 
-let array = array8;
+
+let array = array10;
 
 var counter = 0;
 
